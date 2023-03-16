@@ -11,8 +11,12 @@ class DataCollection {
   }
 
   get(id) {
-    if (id) {
+    if (typeof id === 'number') {
       return this.model.findOne({ where: { id } });
+    }
+    else if(typeof id === 'string')
+    {
+      return this.model.findOne({ where: { name: id } });
     }
     else {
       return this.model.findAll({});
